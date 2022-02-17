@@ -65,7 +65,7 @@ public class VitalTpCmd implements TabExecutor {
 			Utils.sendMessage(sender, "no-perms");
 			return;
 		}
-		if (isOffline(sender, args)) {
+		if (isInValid(sender, args)) {
 			return;
 		}
 		Player player = Bukkit.getPlayer(args[1]);
@@ -89,7 +89,7 @@ public class VitalTpCmd implements TabExecutor {
 			Utils.sendMessage(sender, "no-perms");
 			return;
 		}
-		if (isOffline(sender, args)) {
+		if (isInValid(sender, args)) {
 			return;
 		}
 		Player player = Bukkit.getPlayer(args[1]);
@@ -98,12 +98,16 @@ public class VitalTpCmd implements TabExecutor {
 		Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()), "tphere-done");
 	}
 
-	private boolean isOffline(CommandSender sender, String[] args) {
+	private boolean isInValid(CommandSender sender, String[] args) {
 		if (Bukkit.getPlayer(args[1]) == null) {
 			Utils.sendMessage(sender, "invalid-player");
 			return true;
 		}
 		Player player = Bukkit.getPlayer(args[1]);
+		if (player == sender) {
+			Utils.sendMessage(sender, "invalid-player");
+			return true;
+		}
 		boolean isOnline = Objects.requireNonNull(player).isOnline();
 		if (!isOnline) {
 			Utils.sendMessage(sender, "not-online");
