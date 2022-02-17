@@ -16,39 +16,40 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/VitalTp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitaltrash;
+package com.tamrielnetwork.vitaltp;
 
-import com.tamrielnetwork.vitaltrash.commands.VitalTrashCmd;
-import com.tamrielnetwork.vitaltrash.files.Messages;
+import com.tamrielnetwork.vitaltp.commands.VitalTpCmd;
+import com.tamrielnetwork.vitaltp.files.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public final class VitalTrash extends JavaPlugin {
+public final class VitalTp extends JavaPlugin {
 
 	private Messages messages;
 
 	@Override
 	public void onEnable() {
 
-		Objects.requireNonNull(getCommand("vitaltrash")).setExecutor(new VitalTrashCmd());
+		Objects.requireNonNull(getCommand("vitaltp")).setExecutor(new VitalTpCmd());
+		Objects.requireNonNull(getCommand("vitaltp")).setTabCompleter(new VitalTpCmd());
 
 		saveDefaultConfig();
 
 		messages = new Messages();
 
-		Bukkit.getLogger().info("VitalTrash v" + this.getDescription().getVersion() + " enabled");
+		Bukkit.getLogger().info("VitalTp v" + this.getDescription().getVersion() + " enabled");
 		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
 		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
 		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
-		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalCraft/blob/main/LICENSE for more details.");
+		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalTp/blob/main/LICENSE for more details.");
 	}
 
 	@Override
 	public void onDisable() {
 
-		Bukkit.getLogger().info("VitalTrash v" + this.getDescription().getVersion() + " disabled");
+		Bukkit.getLogger().info("VitalTp v" + this.getDescription().getVersion() + " disabled");
 	}
 
 	public Messages getMessages() {
