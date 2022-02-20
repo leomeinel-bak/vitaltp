@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class Cmd {
 
-	public static boolean checkArgsNotEqualTo(CommandSender sender, String[] args, int length) {
+	public static boolean checkArgsNotEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
 		if (args.length != length) {
 			Chat.sendMessage(sender, "cmd");
 			return true;

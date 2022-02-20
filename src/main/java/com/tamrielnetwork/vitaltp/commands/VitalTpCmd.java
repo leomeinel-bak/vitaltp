@@ -42,14 +42,14 @@ public class VitalTpCmd implements TabExecutor {
 		}
 
 		switch (args[0]) {
-			case "tp" -> handleTp(sender, args, "vitaltp.tp", "tp-done");
-			case "tphere" -> handleTp(sender, args, "vitaltp.tphere", "tphere-done");
+			case "tp" -> handleTp(sender, args, "vitaltp.tp");
+			case "tphere" -> handleTp(sender, args, "vitaltp.tphere");
 			default -> Chat.sendMessage(sender, "invalid-option");
 		}
 		return true;
 	}
 
-	public void handleTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, @NotNull String playerMessage) {
+	public void handleTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm) {
 		Player player = Bukkit.getPlayer(args[1]);
 
 		if (player == null) {
