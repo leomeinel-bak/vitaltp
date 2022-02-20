@@ -18,8 +18,9 @@
 
 package com.tamrielnetwork.vitaltp.commands;
 
-import com.google.common.collect.ImmutableMap;
-import com.tamrielnetwork.vitaltp.utils.Utils;
+import com.tamrielnetwork.vitaltp.utils.Chat;
+import com.tamrielnetwork.vitaltp.utils.Cmd;
+import com.tamrielnetwork.vitaltp.utils.CmdSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -30,90 +31,37 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VitalTpCmd implements TabExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 		// Check args length
-		if (args.length < 2) {
-			Utils.sendMessage(sender, "no-args");
+		if (Cmd.checkArgsNotEqualTo(sender, args, 2)) {
 			return true;
 		}
 		// Check arg 0
 		switch (args[0]) {
-			case "tp" -> executeTp(sender, args);
-			case "tphere" -> executeTpHere(sender, args);
-			default -> Utils.sendMessage(sender, "invalid-option");
+			case "tp" -> handleTp(sender, args, "vitaltp.tp", "tp-done");
+			case "tphere" -> handleTp(sender, args, "vitaltp.tphere", "tphere-done");
+			default -> Chat.sendMessage(sender, "invalid-option");
 		}
 		return true;
 	}
 
-	private void executeTp(CommandSender sender, String[] args) {
-		if (args.length > 2) {
-			Utils.sendMessage(sender, "invalid-option");
-			return;
-		}
-		// Check if command sender is a player
-		if (!(sender instanceof Player)) {
-			Utils.sendMessage(sender, "player-only");
-			return;
-		}
-		// Check perms
-		if (!sender.hasPermission("vitaltp.tp")) {
-			Utils.sendMessage(sender, "no-perms");
-			return;
-		}
-		if (isInValid(sender, args)) {
-			return;
-		}
+	public void handleTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, @NotNull String playerMessage) {
 		Player player = Bukkit.getPlayer(args[1]);
-		assert player != null;
-		((Player) sender).teleport(player.getLocation());
-		Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()), "tp-done");
-	}
 
-	private void executeTpHere(CommandSender sender, String[] args) {
-		if (args.length > 2) {
-			Utils.sendMessage(sender, "invalid-option");
+		if (player == null) {
+			Chat.sendMessage(sender, "not-online");
 			return;
 		}
-		// Check if command sender is a player
-		if (!(sender instanceof Player)) {
-			Utils.sendMessage(sender, "player-only");
-			return;
-		}
-		// Check perms
-		if (!sender.hasPermission("vitaltp.tphere")) {
-			Utils.sendMessage(sender, "no-perms");
-			return;
-		}
-		if (isInValid(sender, args)) {
-			return;
-		}
-		Player player = Bukkit.getPlayer(args[1]);
-		assert player != null;
-		player.teleport(((Player) sender).getLocation());
-		Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()), "tphere-done");
-	}
 
-	private boolean isInValid(CommandSender sender, String[] args) {
-		if (Bukkit.getPlayer(args[1]) == null) {
-			Utils.sendMessage(sender, "invalid-player");
-			return true;
+		if (CmdSpec.isInvalidTp(sender, player, perm)) {
+			return;
 		}
-		Player player = Bukkit.getPlayer(args[1]);
-		if (player == sender) {
-			Utils.sendMessage(sender, "invalid-player");
-			return true;
-		}
-		boolean isOnline = Objects.requireNonNull(player).isOnline();
-		if (!isOnline) {
-			Utils.sendMessage(sender, "not-online");
-			return true;
-		}
-		return false;
+
+		CmdSpec.doTp(sender, args, player);
 	}
 
 	@Override
