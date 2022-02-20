@@ -36,11 +36,11 @@ public class VitalTpCmd implements TabExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-		// Check args length
+
 		if (Cmd.checkArgsNotEqualTo(sender, args, 2)) {
 			return true;
 		}
-		// Check arg 0
+
 		switch (args[0]) {
 			case "tp" -> handleTp(sender, args, "vitaltp.tp", "tp-done");
 			case "tphere" -> handleTp(sender, args, "vitaltp.tphere", "tphere-done");
