@@ -18,9 +18,10 @@
 
 package com.tamrielnetwork.vitaltp.commands;
 
+import com.google.common.collect.ImmutableMap;
 import com.tamrielnetwork.vitaltp.utils.Chat;
-import com.tamrielnetwork.vitaltp.utils.Cmd;
-import com.tamrielnetwork.vitaltp.utils.CmdSpec;
+import com.tamrielnetwork.vitaltp.utils.commands.Cmd;
+import com.tamrielnetwork.vitaltp.utils.commands.CmdSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -37,31 +38,39 @@ public class VitalTpCmd implements TabExecutor {
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-		if (Cmd.checkArgsNotEqualTo(sender, args, 2)) {
+		if (Cmd.isArgsLengthNotEqualTo(sender, args, 2)) {
 			return true;
 		}
 
 		switch (args[0]) {
-			case "tp" -> handleTp(sender, args, "vitaltp.tp");
-			case "tphere" -> handleTp(sender, args, "vitaltp.tphere");
+			case "tp" -> doTp(sender, args, "vitaltp.tp");
+			case "tphere" -> doTp(sender, args, "vitaltp.tphere");
 			default -> Chat.sendMessage(sender, "invalid-option");
 		}
 		return true;
 	}
 
-	public void handleTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm) {
+	public void doTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm) {
+		Player senderPlayer = (Player) sender;
 		Player player = Bukkit.getPlayer(args[1]);
 
-		if (player == null) {
-			Chat.sendMessage(sender, "not-online");
+		if (CmdSpec.isInvalidCmd(sender, player, perm)) {
 			return;
 		}
 
-		if (CmdSpec.isInvalidTp(sender, player, perm)) {
-			return;
-		}
+		assert player != null;
 
-		CmdSpec.doTp(sender, args, player);
+		switch (args[0]) {
+			case "tp" -> {
+				player.teleport(senderPlayer.getLocation());
+				Chat.sendMessage(player, ImmutableMap.of("%player%", sender.getName()), "tp-done");
+			}
+			case "tphere" -> {
+				senderPlayer.teleport(player.getLocation());
+				Chat.sendMessage(player, ImmutableMap.of("%player%", sender.getName()), "tphere-done");
+			}
+			default -> Chat.sendMessage(sender, "cmd");
+		}
 	}
 
 	@Override

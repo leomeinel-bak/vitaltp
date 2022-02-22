@@ -16,33 +16,42 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/VitalTp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitaltp.utils;
+package com.tamrielnetwork.vitaltp.utils.commands;
 
-import com.google.common.collect.ImmutableMap;
+import com.tamrielnetwork.vitaltp.utils.Chat;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdSpec {
+public class Cmd {
 
-	public static void doTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull Player player) {
-		Player senderPlayer = (Player) sender;
-
-		switch (args[0]) {
-			case "tp" -> {
-				player.teleport(senderPlayer.getLocation());
-				Chat.sendMessage(player, ImmutableMap.of("%player%", sender.getName()), "tp-done");
-			}
-			case "tphere" -> {
-				senderPlayer.teleport(player.getLocation());
-				Chat.sendMessage(player, ImmutableMap.of("%player%", sender.getName()), "tphere-done");
-			}
-			default -> Chat.sendMessage(sender, "cmd");
+	public static boolean isArgsLengthNotEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
+		if (args.length != length) {
+			Chat.sendMessage(sender, "cmd");
+			return true;
 		}
+		return false;
 	}
 
-	public static boolean isInvalidTp(@NotNull CommandSender sender, @NotNull Player player, @NotNull String perm) {
-		if (Cmd.checkSender(sender) || Cmd.checkPerm(sender, perm)) {
+	public static boolean isNotPermitted(@NotNull CommandSender sender, @NotNull String perm) {
+		if (!sender.hasPermission(perm)) {
+			Chat.sendMessage(sender, "no-perms");
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isInvalidSender(@NotNull CommandSender sender) {
+		if (!(sender instanceof Player)) {
+			Chat.sendMessage(sender, "player-only");
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isInvalidPlayer(@NotNull CommandSender sender, Player player) {
+		if (player == null) {
+			Chat.sendMessage(sender, "not-online");
 			return true;
 		}
 		if (player == sender) {
@@ -51,5 +60,6 @@ public class CmdSpec {
 		}
 		return false;
 	}
+
 
 }
