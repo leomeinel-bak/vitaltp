@@ -42,7 +42,7 @@ public class VitalTpCmd implements TabExecutor {
 			return true;
 		}
 
-		switch (args[0]) {
+		switch (args[0].toLowerCase()) {
 			case "tp" -> doTp(sender, args, "vitaltp.tp");
 			case "tphere" -> doTp(sender, args, "vitaltp.tphere");
 			default -> Chat.sendMessage(sender, "invalid-option");
@@ -51,16 +51,17 @@ public class VitalTpCmd implements TabExecutor {
 	}
 
 	public void doTp(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm) {
-		Player senderPlayer = (Player) sender;
+
 		Player player = Bukkit.getPlayer(args[1]);
 
 		if (CmdSpec.isInvalidCmd(sender, player, perm)) {
 			return;
 		}
+		Player senderPlayer = (Player) sender;
 
 		assert player != null;
 
-		switch (args[0]) {
+		switch (args[0].toLowerCase()) {
 			case "tp" -> {
 				player.teleport(senderPlayer.getLocation());
 				Chat.sendMessage(player, ImmutableMap.of("%player%", sender.getName()), "tp-done");
@@ -75,6 +76,7 @@ public class VitalTpCmd implements TabExecutor {
 
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
 			if (sender.hasPermission("vitaltp.tp")) {
@@ -88,4 +90,5 @@ public class VitalTpCmd implements TabExecutor {
 		}
 		return tabComplete;
 	}
+
 }

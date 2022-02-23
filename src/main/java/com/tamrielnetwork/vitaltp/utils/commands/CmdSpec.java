@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public class CmdSpec {
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
+
 		if (Cmd.isInvalidSender(sender)) {
 			return true;
 		}
