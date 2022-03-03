@@ -50,7 +50,7 @@ public class VitalTpCmd implements CommandExecutor {
 		Player senderPlayer = (Player) sender;
 		assert player != null;
 
-		player.teleport(senderPlayer.getLocation());
+		senderPlayer.teleport(player.getLocation());
 	}
 
 }

@@ -50,7 +50,7 @@ public class VitalTphereCmd implements CommandExecutor {
 		Player senderPlayer = (Player) sender;
 		assert player != null;
 
-		senderPlayer.teleport(player.getLocation());
+		player.teleport(senderPlayer.getLocation());
 	}
 
 }
