@@ -6,9 +6,12 @@ authors: [ Tamriel Network ]
 website: https://tamriel.site
 description: Gives players the ability to teleport to each other.
 commands:
-  vitaltp:
+  tp:
     description: "Main command"
-    usage: "/vitaltp tp/tphere <player>"
+    usage: "/tp <player>"
+  tphere:
+    description: "Main command"
+    usage: "/tphere <player>"
 permissions:
   vitaltp.tp:
     description: "Permission to teleport to others"

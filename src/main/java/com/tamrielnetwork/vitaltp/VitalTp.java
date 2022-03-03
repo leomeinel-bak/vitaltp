@@ -19,6 +19,7 @@
 package com.tamrielnetwork.vitaltp;
 
 import com.tamrielnetwork.vitaltp.commands.VitalTpCmd;
+import com.tamrielnetwork.vitaltp.commands.VitalTphereCmd;
 import com.tamrielnetwork.vitaltp.files.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,10 +33,7 @@ public final class VitalTp extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
-		Objects.requireNonNull(getCommand("vitaltp")).setExecutor(new VitalTpCmd());
-		Objects.requireNonNull(getCommand("vitaltp")).setTabCompleter(new VitalTpCmd());
-
-		saveDefaultConfig();
+		registerCommands();
 
 		messages = new Messages();
 
@@ -50,6 +48,12 @@ public final class VitalTp extends JavaPlugin {
 	public void onDisable() {
 
 		Bukkit.getLogger().info("VitalTp v" + this.getDescription().getVersion() + " disabled");
+	}
+
+	private void registerCommands() {
+
+		Objects.requireNonNull(getCommand("tp")).setExecutor(new VitalTpCmd());
+		Objects.requireNonNull(getCommand("tphere")).setExecutor(new VitalTphereCmd());
 	}
 
 	public Messages getMessages() {
