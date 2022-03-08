@@ -24,6 +24,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class CmdSpec {
 
+	private CmdSpec(){
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
 
 		if (Cmd.isInvalidSender(sender)) {
