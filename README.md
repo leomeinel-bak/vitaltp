@@ -45,7 +45,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
-        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#configuration - messages.yml">Configuration</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -86,25 +86,22 @@ To get the plugin running on your server follow these simple steps.
 
 1. Permission: `vitaltp.tp`
 
-* Command: `/vitaltp tp <player>`
+* Command: `/tp <player>`
 * Description: Teleport to others
 
 2. Permission: `vitaltp.tphere`
 
-* Command: `/vitaltp tphere`
+* Command: `/tphere <player>`
 * Description: Teleport others to you
-
-### Configuration - config.yml
-
-```
-```
 
 ### Configuration - messages.yml
 
 ```
+cmd: "&fUsage: &b/tp <player> &for &b/tphere <player>"
+no-perms: "&cYou don't have enough permissions!"
 player-only: "&cThis command can only be executed by players!"
-invalid-option: "&cInvalid option!"
-no-perms: "&7You don't have enough permissions!"
+not-online: "&cPlayer is not online!"
+same-player: "&cYou can't teleport to yourself!"
 ```
 
 <!-- ROADMAP -->
