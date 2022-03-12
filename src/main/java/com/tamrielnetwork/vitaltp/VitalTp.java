@@ -26,40 +26,44 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public final class VitalTp extends JavaPlugin {
+public final class VitalTp
+		extends JavaPlugin {
 
 	private Messages messages;
 
 	@Override
 	public void onEnable() {
-
 		registerCommands();
-
 		messages = new Messages();
-
-		Bukkit.getLogger().info("VitalTp v" + this.getDescription().getVersion() + " enabled");
-		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
-		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
-		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
-		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/VitalTp/blob/main/LICENSE for more details.");
+		Bukkit.getLogger()
+		      .info("VitalTp v" + this.getDescription()
+		                              .getVersion() + " enabled");
+		Bukkit.getLogger()
+		      .info("Copyright (C) 2022 Leopold Meinel");
+		Bukkit.getLogger()
+		      .info("This program comes with ABSOLUTELY NO WARRANTY!");
+		Bukkit.getLogger()
+		      .info("This is free software, and you are welcome to redistribute it under certain conditions.");
+		Bukkit.getLogger()
+		      .info("See https://github.com/TamrielNetwork/VitalTp/blob/main/LICENSE for more details.");
 	}
 
 	@Override
 	public void onDisable() {
-
-		Bukkit.getLogger().info("VitalTp v" + this.getDescription().getVersion() + " disabled");
+		Bukkit.getLogger()
+		      .info("VitalTp v" + this.getDescription()
+		                              .getVersion() + " disabled");
 	}
 
 	private void registerCommands() {
-
-		Objects.requireNonNull(getCommand("tp")).setExecutor(new VitalTpCmd());
-		Objects.requireNonNull(getCommand("tphere")).setExecutor(new VitalTphereCmd());
+		Objects.requireNonNull(getCommand("tp"))
+		       .setExecutor(new VitalTpCmd());
+		Objects.requireNonNull(getCommand("tphere"))
+		       .setExecutor(new VitalTphereCmd());
 	}
 
 	public Messages getMessages() {
-
 		return messages;
 	}
-
 }
 

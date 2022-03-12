@@ -27,30 +27,26 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class VitalTphereCmd implements CommandExecutor {
+public class VitalTphereCmd
+		implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
 		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
 			return false;
 		}
-
 		doTphere(sender, args);
 		return true;
 	}
 
 	public void doTphere(@NotNull CommandSender sender, @NotNull String[] args) {
-
 		Player player = Bukkit.getPlayer(args[0]);
-
 		if (CmdSpec.isInvalidCmd(sender, player, "vitaltp.tphere")) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
 		assert player != null;
-
 		player.teleport(senderPlayer.getLocation());
 	}
-
 }
