@@ -16,19 +16,37 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalTp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitaltp.utils.commands;
+package dev.meinel.leo.vitaltp.commands;
 
+import dev.meinel.leo.vitaltp.utils.commands.Cmd;
+import dev.meinel.leo.vitaltp.utils.commands.CmdSpec;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdSpec {
+public class VitalTpCmd
+		implements CommandExecutor {
 
-	private CmdSpec() {
-		throw new IllegalStateException("Utility class");
+	@Override
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
+		if (Cmd.isArgsLengthNotEqualTo(sender, args, 1)) {
+			return false;
+		}
+		doTp(sender, args);
+		return true;
 	}
 
-	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
-		return Cmd.isInvalidSender(sender) || Cmd.isNotPermitted(sender, perm) || Cmd.isInvalidPlayer(sender, player);
+	public void doTp(@NotNull CommandSender sender, @NotNull String[] args) {
+		Player player = Bukkit.getPlayer(args[0]);
+		if (CmdSpec.isInvalidCmd(sender, player, "vitaltp.tp")) {
+			return;
+		}
+		Player senderPlayer = (Player) sender;
+		assert player != null;
+		senderPlayer.teleport(player.getLocation());
 	}
 }

@@ -1,6 +1,6 @@
 name: VitalTp
 version: @version@
-main: com.tamrielnetwork.vitaltp.VitalTp
+main: dev.meinel.leo.vitaltp.VitalTp
 api-version: 1.17
 authors: [ Leopold Meinel ]
 description: Gives players the ability to teleport to each other.

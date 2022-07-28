@@ -16,11 +16,11 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalTp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitaltp;
+package dev.meinel.leo.vitaltp;
 
-import com.tamrielnetwork.vitaltp.commands.VitalTpCmd;
-import com.tamrielnetwork.vitaltp.commands.VitalTphereCmd;
-import com.tamrielnetwork.vitaltp.files.Messages;
+import dev.meinel.leo.vitaltp.commands.VitalTpCmd;
+import dev.meinel.leo.vitaltp.commands.VitalTphereCmd;
+import dev.meinel.leo.vitaltp.files.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

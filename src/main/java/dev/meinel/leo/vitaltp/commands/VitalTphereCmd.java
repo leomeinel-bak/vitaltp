@@ -16,10 +16,10 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalTp/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitaltp.commands;
+package dev.meinel.leo.vitaltp.commands;
 
-import com.tamrielnetwork.vitaltp.utils.commands.Cmd;
-import com.tamrielnetwork.vitaltp.utils.commands.CmdSpec;
+import dev.meinel.leo.vitaltp.utils.commands.Cmd;
+import dev.meinel.leo.vitaltp.utils.commands.CmdSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
