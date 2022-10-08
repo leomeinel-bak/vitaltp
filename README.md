@@ -11,7 +11,7 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/LeoMeinel/VitalTp">
+  <a href="https://github.com/LeoMeinel/vitaltp">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,14 +20,14 @@
   <p align="center">
     Teleport on Spigot and Paper
     <br />
-    <a href="https://github.com/LeoMeinel/VitalTp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LeoMeinel/vitaltp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LeoMeinel/VitalTp">View Demo</a>
+    <a href="https://github.com/LeoMeinel/vitaltp">View Demo</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalTp/issues">Report Bug</a>
+    <a href="https://github.com/LeoMeinel/vitaltp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalTp/issues">Request Feature</a>
+    <a href="https://github.com/LeoMeinel/vitaltp/issues">Request Feature</a>
   </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -82,7 +82,7 @@ same-player: "&cYou can't teleport to yourself!"
 
 ## Roadmap
 
-See the [open issues](https://github.com/LeoMeinel/VitalTp/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/LeoMeinel/vitaltp/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -110,7 +110,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 Leopold Meinel - [leo@meinel.dev](mailto:leo@meinel.dev) - eMail
 
-Project Link - [VitalTp](https://github.com/LeoMeinel/VitalTp) - GitHub
+Project Link - [VitalTp](https://github.com/LeoMeinel/vitaltp) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -120,15 +120,15 @@ Project Link - [VitalTp](https://github.com/LeoMeinel/VitalTp) - GitHub
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/VitalTp?style=for-the-badge
-[contributors-url]: https://github.com/LeoMeinel/VitalTp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/VitalTp?label=Forks&style=for-the-badge
-[forks-url]: https://github.com/LeoMeinel/VitalTp/network/members
-[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/VitalTp?style=for-the-badge
-[stars-url]: https://github.com/LeoMeinel/VitalTp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/VitalTp?style=for-the-badge
-[issues-url]: https://github.com/LeoMeinel/VitalTp/issues
-[license-shield]: https://img.shields.io/github/license/LeoMeinel/VitalTp?style=for-the-badge
-[license-url]: https://github.com/LeoMeinel/VitalTp/blob/main/LICENSE
-[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/VitalTp?style=for-the-badge
-[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/VitalTp
+[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/vitaltp?style=for-the-badge
+[contributors-url]: https://github.com/LeoMeinel/vitaltp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/vitaltp?label=Forks&style=for-the-badge
+[forks-url]: https://github.com/LeoMeinel/vitaltp/network/members
+[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/vitaltp?style=for-the-badge
+[stars-url]: https://github.com/LeoMeinel/vitaltp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/vitaltp?style=for-the-badge
+[issues-url]: https://github.com/LeoMeinel/vitaltp/issues
+[license-shield]: https://img.shields.io/github/license/LeoMeinel/vitaltp?style=for-the-badge
+[license-url]: https://github.com/LeoMeinel/vitaltp/blob/main/LICENSE
+[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/vitaltp?style=for-the-badge
+[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/vitaltp
