@@ -22,7 +22,7 @@ public class CmdSpec {
 
     public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player,
             @NotNull String perm) {
-        return (Cmd.isInvalidSender(sender) || Cmd.isNotPermitted(sender, perm)
+        return (Cmd.isInvalidSender(sender) || !Cmd.isPermitted(sender, perm)
                 || Cmd.isInvalidPlayer(sender, player));
     }
 }
